@@ -28,3 +28,9 @@ variable "aws_region" {
   type = string
   default = "ap-southeast-2"
 }
+
+variable "aws_subnet_region" {
+  description = "AWS region for subnets"
+  type = string
+  default = "ap-southeast-2a"
+}
