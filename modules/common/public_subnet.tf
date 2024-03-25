@@ -16,16 +16,30 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet_1" {
   vpc_id            = aws_vpc.vpc.id
-  availability_zone = var.aws_subnet_region
-  cidr_block        = var.public_subnet_cidr_block
+  availability_zone = var.aws_public_subnet_region_1
+  cidr_block        = var.public_subnet_cidr_block_1
   tags              = {
-    Name = format("%s_%s", var.environment, "public_subnet")
+    Name = format("%s_%s", var.environment, "public_subnet_1")
   }
 }
 
-resource "aws_route_table_association" "public_subnet_to_table" {
+resource "aws_route_table_association" "public_subnet_to_table_1" {
   route_table_id = aws_route_table.public_route_table.id
-  subnet_id      = aws_subnet.public_subnet.id
+  subnet_id      = aws_subnet.public_subnet_1.id
+}
+
+resource "aws_subnet" "public_subnet_2" {
+  vpc_id            = aws_vpc.vpc.id
+  availability_zone = var.aws_public_subnet_region_2
+  cidr_block        = var.public_subnet_cidr_block_2
+  tags              = {
+    Name = format("%s_%s", var.environment, "public_subnet_2")
+  }
+}
+
+resource "aws_route_table_association" "public_subnet_to_table_2" {
+  route_table_id = aws_route_table.public_route_table.id
+  subnet_id      = aws_subnet.public_subnet_2.id
 }
