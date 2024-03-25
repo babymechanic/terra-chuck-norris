@@ -27,8 +27,10 @@ data "terraform_remote_state" "common_infra" {
 }
 
 module "chuck_norris_say" {
-  source             = "../../../modules/chuck_norris_say"
-  public_subnet_id_1 = data.terraform_remote_state.common_infra.outputs.public_subnet_id_1
-  public_subnet_id_2 = data.terraform_remote_state.common_infra.outputs.public_subnet_id_2
-  vpc_id             = data.terraform_remote_state.common_infra.outputs.vpc_id
+  source              = "../../../modules/chuck_norris_say"
+  public_subnet_id_1  = data.terraform_remote_state.common_infra.outputs.public_subnet_id_1
+  public_subnet_id_2  = data.terraform_remote_state.common_infra.outputs.public_subnet_id_2
+  vpc_id              = data.terraform_remote_state.common_infra.outputs.vpc_id
+  private_subnet_id_1 = data.terraform_remote_state.common_infra.outputs.private_subnet_id_1
+  private_subnet_id_2 = data.terraform_remote_state.common_infra.outputs.private_subnet_id_2
 }

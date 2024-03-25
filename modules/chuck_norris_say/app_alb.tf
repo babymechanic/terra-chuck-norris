@@ -34,4 +34,5 @@ resource "aws_lb_listener" "http_forward" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.chuck_norris.arn
   }
+
 }

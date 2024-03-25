@@ -10,9 +10,9 @@ resource "aws_ecs_service" "chuck_norris_app" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets          = [var.public_subnet_id_1]
+    subnets          = [var.private_subnet_id_1, var.private_subnet_id_2]
     security_groups  = [aws_security_group.ecs_tasks.id]
-    assign_public_ip = true
+    assign_public_ip = false
   }
 
   load_balancer {
