@@ -27,6 +27,10 @@
       {
         "name": "PORT",
         "value": "${container_port}"
+      },
+      {
+        "name": "AWS_REGION",
+        "value": "${aws_region}"
       }
     ],
     "ulimits": [
