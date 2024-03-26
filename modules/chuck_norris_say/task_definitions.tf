@@ -1,7 +1,7 @@
 data "template_file" "chuck_norris_app" {
   template = file("${path.module}/app_task_def.json.tpl")
   vars     = {
-    docker_repository = "marcnuri/chuck-norris"
+    docker_repository = var.chuck_norris_ecr_url
     tag                = "latest"
     api_name           = "chuck_norris"
     app_port           = 80

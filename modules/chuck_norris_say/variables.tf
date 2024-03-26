@@ -33,3 +33,7 @@ variable "private_subnet_id_2" {
 variable "chuck_norris_bucket_arn" {
   type = string
 }
+
+variable "chuck_norris_ecr_url" {
+  type = string
+}
