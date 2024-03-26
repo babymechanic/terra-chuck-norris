@@ -1,7 +1,11 @@
 import express from 'express';
 import {GetObjectCommand, S3Client} from "@aws-sdk/client-s3";
 
-const s3Client = new S3Client({region: "ap-southeast-2",});
+function createClient() {
+    return new S3Client({region: "ap-southeast-2"});
+}
+
+const s3Client = createClient();
 const command = new GetObjectCommand({
     Bucket: 'dev-chuck-norris',
     Key: 'chuck-norris.txt'
@@ -20,6 +24,7 @@ app.get('/', async (req, res) => {
         res.status(500);
         res.send("Something went wrong");
     }
+
 });
 
 app.listen(port, () => {

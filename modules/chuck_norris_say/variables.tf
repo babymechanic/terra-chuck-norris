@@ -37,3 +37,7 @@ variable "chuck_norris_bucket_arn" {
 variable "chuck_norris_ecr_url" {
   type = string
 }
+
+variable "ecr_image_tag" {
+  type = string
+}

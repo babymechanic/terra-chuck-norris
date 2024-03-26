@@ -2,13 +2,13 @@ data "template_file" "chuck_norris_app" {
   template = file("${path.module}/app_task_def.json.tpl")
   vars     = {
     docker_repository = var.chuck_norris_ecr_url
-    tag                = "latest"
-    api_name           = "chuck_norris"
-    app_port           = 80
-    aws_region         = var.aws_region
-    environment        = var.environment
-    container_port     = 8080
-    host_port          = 8080
+    tag               = var.ecr_image_tag
+    api_name          = "chuck_norris"
+    app_port          = 80
+    aws_region        = var.aws_region
+    environment       = var.environment
+    container_port    = 8080
+    host_port         = 8080
   }
 }
 
@@ -20,6 +20,7 @@ resource "aws_ecs_task_definition" "chuck_norris" {
   memory                   = 2048
   requires_compatibilities = ["FARGATE"]
   container_definitions    = data.template_file.chuck_norris_app.rendered
+  task_role_arn            = aws_iam_role.ecs_task_role.arn
   tags                     = {
     Environment = var.environment
     Application = "chuck_norris"

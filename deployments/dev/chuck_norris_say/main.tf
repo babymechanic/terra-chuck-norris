@@ -35,4 +35,5 @@ module "chuck_norris_say" {
   private_subnet_id_2     = data.terraform_remote_state.common_infra.outputs.private_subnet_id_2
   chuck_norris_bucket_arn = data.terraform_remote_state.common_infra.outputs.chuck_norris_bucket_arn
   chuck_norris_ecr_url    = data.terraform_remote_state.common_infra.outputs.chuck_norris_ecr_repo_url
+  ecr_image_tag = "3"
 }
